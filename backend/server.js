@@ -9,10 +9,20 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001'],
+  origin: [
+    'http://localhost:3000', 
+    'http://localhost:3001',
+    'https://babystepsapi-f2gg.vercel.app',
+    'https://babystepsapi-lil.vercel.app'
+  ],
   credentials: true
 }));
 app.use(express.json());
+
+// Add welcome route
+app.get("/", (req, res) => {
+  res.send("🎉 Welcome to the BabySteps API - Backend is Live!");
+});
 
 // Import routes
 const authRoutes = require('./routes/auth');
