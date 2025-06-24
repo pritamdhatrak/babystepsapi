@@ -7,17 +7,14 @@ dotenv.config();
 
 const app = express();
 
-// Middleware
+// Most permissive CORS configuration
 app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'http://localhost:3001',
-    'https://babystepsapi-f2gg-je09n9loa-pritams-projects-8d629749.vercel.app',  // Your exact frontend URL
-    'https://babystepsapi-f2gg.vercel.app'
-  ],
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']  // Add this line
+  origin: '*',  // Allow all origins
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 }));
+
 app.use(express.json());
 
 // Add welcome route
