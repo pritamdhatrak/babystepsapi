@@ -9,8 +9,14 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: true,  // Allow all origins
-  credentials: true
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'https://babystepsapi-f2gg-je09n9loa-pritams-projects-8d629749.vercel.app',  // Your exact frontend URL
+    'https://babystepsapi-f2gg.vercel.app'
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']  // Add this line
 }));
 app.use(express.json());
 
